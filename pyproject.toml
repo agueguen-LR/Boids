@@ -17,3 +17,6 @@ platforms = ["linux-64"]
 boids = { path = ".", editable = true }
 
 [tool.pixi.tasks]
+
+[tool.pixi.dependencies]
+scipy = ">=1.18.1,<2"
