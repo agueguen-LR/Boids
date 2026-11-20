@@ -61,6 +61,10 @@ class Boids(Sequence[BoidView]):
             self._velocities[index],
         )
 
-    def __uniform_generator(self) -> Iterator[np.ndarray]:
+    def advance(self) -> None:
+        self._positions += self._velocities
+
+    def simulate(self) -> Iterator[list[BoidView]]:
         while True:
-            yield np.random.uniform(low=0.0, high=self._domain, size=3)
+            self.advance()
+            yield self[:]
